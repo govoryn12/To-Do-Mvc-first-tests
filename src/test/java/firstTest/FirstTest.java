@@ -14,8 +14,8 @@ public class FirstTest {
 
     // GIVEN
     @Before
-    public static void runBrowser(){
-        System.setProperty("webdriver.chrome.driver", "D:\\Загрузки\\First_project\\chromedriver.exe");
+    public  void runBrowser(){
+        System.setProperty("webdriver.chrome.driver", "D:\\First_project\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1280,800));//set1280x800
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);//what it means?
@@ -48,7 +48,7 @@ public class FirstTest {
 
     @After
 
-    public static void closeBrowser(){
+    public void closeBrowser(){
         driver.quit();
     }
 

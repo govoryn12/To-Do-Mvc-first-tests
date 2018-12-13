@@ -16,7 +16,7 @@ public class SecondTest {
     // GIVEN
     @Before
     public void runBrowserAndCreateTodos(){
-        System.setProperty("webdriver.chrome.driver", "D:\\Загрузки\\First_project\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\First_project\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1280,800));//set1280x800
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
