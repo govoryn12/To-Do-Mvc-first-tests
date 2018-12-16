@@ -42,7 +42,6 @@ public class FirstTest {
         //
         // check number of todos
         Assert.assertNotEquals(driver.findElements(By.xpath("//li/div[@class=\"view\"]")).size(), 3);
-
     }
 
 
