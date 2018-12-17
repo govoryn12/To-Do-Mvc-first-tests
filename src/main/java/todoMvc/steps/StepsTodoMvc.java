@@ -16,53 +16,42 @@ public class StepsTodoMvc extends PageTodoMvc {
     }
 
     @Step
-    public void addTodoManyTimes(String text, int numberOfTimes){
+    public void addTodo(String text, int numberOfTimes){
         setInputFieldManyTimes(text, numberOfTimes);
     }
 
     @Step
-    public void goTo (String link){
-        startBrowserWithDimensionAndUrl(link);
-    }
-
-    @Step
     public int numberOfTodos(){
-        return getNumberOfTodos();
+        return getListOfAllNotes().size();
     }
 
     @Step
-    public int numberOfWheelTodos(){
-        return getNumberOfWheelTodos();
+    public int numberOfTodos(String inputText){
+        return getListOfAllNotesByInputText(inputText).size();
     }
 
     @Step
-    public void closeBrowser(){
-        exitFromBrowser();
+    public void markDoneTodo(String inputText){
+        findMarkDoneButtonByInputText(inputText).click();
+    }
+    @Step
+    public void markDoneTodo(String inputText, int sequenceNumber){
+        findMarkDoneButtonByInputTextAndSequenceNumber(inputText, sequenceNumber).click();
     }
 
     @Step
-    public void markDoneCoffeTodo(){
-        clickOnCoffeMarkDoneBotton();
-    }
-    @Step
-    public void markDoneThirdWheelTodo(){
-        clickOnWheelMarkDoneBotton();
+    public boolean checkIfDone(String inputText){
+        return findCrosedOutNoteByInputText(inputText).isDisplayed();
     }
 
     @Step
-    public boolean checkIfDone(){
-        return markedAsDone();
-    }
-
-    @Step
-    public void deleteFirstWheel(){
-        moveToFirstofWheelAndDeleteIt();
+    public void deleteTodo(String inputText, int sequenceNumber){
+        moveToTodoAndDeleteIt(inputText, sequenceNumber);
     }
 
     @Step
     public void seeActiveElements(){
         clickOnActiveElements();
     }
-
 
 }
