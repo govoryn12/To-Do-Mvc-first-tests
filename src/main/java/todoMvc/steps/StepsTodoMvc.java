@@ -1,57 +1,55 @@
 package todoMvc.steps;
 
 import net.thucydides.core.annotations.Step;
-import org.openqa.selenium.WebDriver;
+import net.thucydides.core.steps.ScenarioSteps;
 import todoMvc.pages.PageTodoMvc;
 
-public class StepsTodoMvc extends PageTodoMvc {
+public class StepsTodoMvc extends ScenarioSteps {
 
-    public StepsTodoMvc(WebDriver driver) {
-        super(driver);
-    }
+    PageTodoMvc pageTodoMvc;
 
     @Step
     public void addTodo(String text){
-        setInputField(text);
+        pageTodoMvc.setInputField(text);
     }
 
     @Step
     public void addTodo(String text, int numberOfTimes){
-        setInputFieldManyTimes(text, numberOfTimes);
+        pageTodoMvc.setInputFieldManyTimes(text, numberOfTimes);
     }
 
     @Step
     public int numberOfTodos(){
-        return getListOfAllNotes().size();
+        return pageTodoMvc.getListOfAllNotes().size();
     }
 
     @Step
     public int numberOfTodos(String inputText){
-        return getListOfAllNotesByInputText(inputText).size();
+        return pageTodoMvc.getListOfAllNotesByInputText(inputText).size();
     }
 
     @Step
     public void markDoneTodo(String inputText){
-        findMarkDoneButtonByInputText(inputText).click();
+        pageTodoMvc.findMarkDoneButtonByInputText(inputText).click();
     }
     @Step
     public void markDoneTodo(String inputText, int sequenceNumber){
-        findMarkDoneButtonByInputTextAndSequenceNumber(inputText, sequenceNumber).click();
+        pageTodoMvc.findMarkDoneButtonByInputTextAndSequenceNumber(inputText, sequenceNumber).click();
     }
 
     @Step
     public boolean checkIfDone(String inputText){
-        return findCrosedOutNoteByInputText(inputText).isDisplayed();
+        return pageTodoMvc.findCrosedOutNoteByInputText(inputText).isDisplayed();
     }
 
     @Step
     public void deleteTodo(String inputText, int sequenceNumber){
-        moveToTodoAndDeleteIt(inputText, sequenceNumber);
+        pageTodoMvc.moveToTodoAndDeleteIt(inputText, sequenceNumber);
     }
 
     @Step
     public void seeActiveElements(){
-        clickOnActiveElements();
+        pageTodoMvc.clickOnActiveElements();
     }
 
 }

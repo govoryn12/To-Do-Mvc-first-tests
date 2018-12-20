@@ -8,6 +8,11 @@
     <artifactId>first-project</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <webdriver.driver>chrome</webdriver.driver>
+    </properties>
+
+
     <dependencies>
 
         <dependency>
@@ -21,6 +26,7 @@
             <artifactId>serenity-core</artifactId>
             <version>1.9.20</version>
         </dependency>
+
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
@@ -36,5 +42,22 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

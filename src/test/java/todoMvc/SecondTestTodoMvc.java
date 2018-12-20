@@ -1,25 +1,30 @@
 package todoMvc;
 
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import todoMvc.steps.StepsTodoMvc;
 
 import java.util.concurrent.TimeUnit;
 
+@RunWith(SerenityRunner.class)
 public class SecondTestTodoMvc {
-    public WebDriver driver;
+
+    @Steps
     public StepsTodoMvc main;
+
+    @Managed(driver = "chrome")
+    public WebDriver driver;
 
     @Before
     public void start(){
-        System.setProperty("webdriver.chrome.driver", "D:\\First_project\\chromedriver.exe");
-        driver = new ChromeDriver();
-        main = new StepsTodoMvc(driver);
         driver.manage().window().setSize(new Dimension(1280,800));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
